@@ -42,7 +42,7 @@ Requires:	%{name} = %{version}
 %description devel
 Header files and development documentation for %{name}.
 
-%description -l pl devel
+%description devel -l pl
 Pliki nag³ówkowe i dokumentacja do %{name}.
 
 %package static
@@ -54,7 +54,7 @@ Requires:	%{name}-devel = %{version}
 %description static
 %{name} static library.
 
-%description -l pl static
+%description static -l pl
 Biblioteka statyczna %{name}.
 
 %prep
