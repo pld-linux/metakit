@@ -1,11 +1,11 @@
 Summary:	Embeddable database
 Summary(pl):	Baza danych
 Name:		metakit
-Version:	2.01
-Release:	2
+Version:	2.4.5
+Release:	1
 License:	GPL
 Group:		Libraries
-Source0:	http://www.equi4.com/pub/mk/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source0:	http://www.equi4.com/pub/mk/%{name}-%{version}/%{name}-%{version}-35.tar.gz
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-DESTDIR.patch
 Patch2:		%{name}-debian.patch
@@ -59,9 +59,9 @@ Biblioteka statyczna %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
+#%patch0 -p1
 %patch1 -p1
-%patch2 -p1
+#%patch2 -p1
 
 %build
 cd unix
@@ -90,13 +90,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc READ*.gz
-%attr(755,root,root) %{_libdir}/*.so.*.*.*
+%attr(755,root,root) %{_libdir}/*.so
 
 %files devel
 %defattr(644,root,root,755)
 %doc CHA*.gz
 %attr(755,root,root) %{_libdir}/*.la
-%attr(755,root,root) %{_libdir}/*.so
+#%attr(755,root,root) %{_libdir}/*.so
 %{_includedir}/*.h
 %{_includedir}/*.inl
 
