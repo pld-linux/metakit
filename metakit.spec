@@ -5,8 +5,8 @@ Version:	2.4.9.2
 Release:	1
 License:	GPL
 Group:		Libraries
-Source0:	http://www.equi4.com/pub/mk/%{name}-%{version}/%{name}-%{version}-35.tar.gz
-# Source0-md5:	b7034c0ee1632c1e070922da1afd3b76
+Source0:	http://www.equi4.com/pub/mk/%{name}-%{version}.tar.gz
+# Source0-md5:	d436a49baed1a31d1ef01ea537e4ba63
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-DESTDIR.patch
 Patch2:		%{name}-debian.patch
