@@ -2,19 +2,17 @@ Summary:	Embeddable database
 Summary(pl):	Baza danych
 Name:		metakit
 Version:	2.4.9.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries
 Source0:	http://www.equi4.com/pub/mk/%{name}-%{version}.tar.gz
 # Source0-md5:	d436a49baed1a31d1ef01ea537e4ba63
-Patch0:		%{name}-opt.patch
-Patch1:		%{name}-DESTDIR.patch
-Patch2:		%{name}-debian.patch
+Patch0:		%{name}-no_static.patch
 URL:		http://www.equi4.com/metakit/
-BuildRequires:	libtool
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
+BuildRequires:	libtool
 BuildRequires:	tcl-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -60,9 +58,7 @@ Biblioteka statyczna %{name}.
 
 %prep
 %setup -q
-#%patch0 -p1
-%patch1 -p1
-#%patch2 -p1
+%patch0 -p1
 
 %build
 cd unix
@@ -74,13 +70,15 @@ cd unix
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_includedir},%{_libdir}}
+install -d $RPM_BUILD_ROOT{%{_includedir},%{_libdir}} \
+	$RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cd unix
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-cd .. && gzip -9nf README CHAN*
+cd ..
+install examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -90,16 +88,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc READ*.gz
+%doc README WHATSNEW
 %attr(755,root,root) %{_libdir}/*.so
 
 %files devel
 %defattr(644,root,root,755)
-%doc CHA*.gz
+%doc CHANGES MetaKit.html doc
 %{_libdir}/*.la
-#%attr(755,root,root) %{_libdir}/*.so
 %{_includedir}/*.h
 %{_includedir}/*.inl
+%{_examplesdir}/%{name}-%{version}
 
 %files static
 %defattr(644,root,root,755)
