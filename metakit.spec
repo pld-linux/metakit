@@ -2,7 +2,7 @@ Summary:	Embeddable database
 Summary(pl):	Baza danych
 Name:		metakit
 Version:	2.01
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries
 Group(de):	Libraries
