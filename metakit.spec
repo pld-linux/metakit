@@ -9,6 +9,9 @@ Group(de):	Libraries
 Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
+Group(pt_BR):	Bibliotecas
+Group(ru):	Библиотеки
+Group(uk):	Б╕бл╕отеки
 Source0:	http://www.equi4.com/pub/mk/%{name}-%{version}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-DESTDIR.patch
@@ -16,6 +19,7 @@ Patch2:		%{name}-debian.patch
 URL:		http://www.equi4.com/metakit/
 BuildRequires:	libtool
 BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	libstdc++-devel
 BuildRequires:	tcl-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -41,8 +45,12 @@ Summary:	Header files and development documentation for %{name}
 Summary(pl):	Pliki nagЁСwkowe i dokumentacja do %{name}
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Разработка/Библиотеки
+Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description devel
@@ -56,8 +64,12 @@ Summary:	%{name} static library
 Summary(pl):	Statyczna biblioteka %{name}
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Разработка/Библиотеки
+Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
