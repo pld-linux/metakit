@@ -1,13 +1,12 @@
 Summary:	Embeddable database
 Summary(pl):	Baza danych
 Name:		metakit
-Version:	2.4.5
+Version:	2.4.9.2
 Release:	1
 License:	GPL
 Group:		Libraries
-#Source0:	http://www.equi4.com/pub/mk/%{name}-%{version}/%{name}-%{version}-35.tar.gz
-Source0:	%{name}-%{version}/%{name}-%{version}-35.tar.gz
-# Source0-md5:	5257467322d91cbfd9fbc756209c8c2f
+Source0:	http://www.equi4.com/pub/mk/%{name}-%{version}/%{name}-%{version}-35.tar.gz
+# Source0-md5:	b7034c0ee1632c1e070922da1afd3b76
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-DESTDIR.patch
 Patch2:		%{name}-debian.patch
