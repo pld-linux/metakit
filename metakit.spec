@@ -67,7 +67,7 @@ Biblioteka statyczna %{name}.
 cd unix
 libtoolize --copy --force
 aclocal
-autoconf
+%{__autoconf}
 %configure
 %{__make}
 
