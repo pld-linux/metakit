@@ -12,6 +12,7 @@ Group(pl):	Biblioteki
 Source0:	http://www.equi4.com/pub/mk/%{name}-%{version}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-DESTDIR.patch
+Patch2:		%{name}-debian.patch
 URL:		http://www.equi4.com/metakit/
 BuildRequires:	libtool
 BuildRequires:	autoconf
@@ -69,6 +70,7 @@ Biblioteka statyczna %{name}.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 cd unix
