@@ -66,7 +66,7 @@ Biblioteka statyczna %{name}.
 %build
 cd unix
 %{__libtoolize}
-aclocal
+%{__aclocal}
 %{__autoconf}
 %configure
 %{__make}
