@@ -1,12 +1,12 @@
 Summary:	Embeddable database
 Summary(pl):	Baza danych
 Name:		metakit
-Version:	2.4.9.2
-Release:	2
+Version:	2.4.9.3
+Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	http://www.equi4.com/pub/mk/%{name}-%{version}.tar.gz
-# Source0-md5:	d436a49baed1a31d1ef01ea537e4ba63
+# Source0-md5:	89a25775fee5db536937f36deb5223f6
 Patch0:		%{name}-no_static.patch
 URL:		http://www.equi4.com/metakit/
 BuildRequires:	autoconf
@@ -93,7 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc CHANGES MetaKit.html doc
+%doc CHANGES Metakit.html doc
 %{_libdir}/*.la
 %{_includedir}/*.h
 %{_includedir}/*.inl
