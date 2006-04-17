@@ -36,7 +36,7 @@ OODBMS i bazami opartymi na p³askich-plikach.
 Summary:	Header files and development documentation for %{name}
 Summary(pl):	Pliki nag³ówkowe i dokumentacja do %{name}
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files and development documentation for %{name}.
@@ -48,7 +48,7 @@ Pliki nag³ówkowe i dokumentacja do %{name}.
 Summary:	%{name} static library
 Summary(pl):	Statyczna biblioteka %{name}
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 %{name} static library.
