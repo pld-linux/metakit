@@ -1,18 +1,18 @@
 Summary:	Embeddable database
 Summary(pl):	Baza danych
 Name:		metakit
-Version:	2.4.9.3
-Release:	1
+Version:	2.4.9.5
+Release:	0.1
 License:	GPL
 Group:		Libraries
 Source0:	http://www.equi4.com/pub/mk/%{name}-%{version}.tar.gz
-# Source0-md5:	89a25775fee5db536937f36deb5223f6
-Patch0:		%{name}-no_static.patch
-URL:		http://www.equi4.com/metakit/
+# Source0-md5:	37ba351462dad0d7f01394e04c173ce3
+URL:		http://www.equi4.com/metakit.html
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
+BuildRequires:	python-devel
 BuildRequires:	tcl-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -44,41 +44,50 @@ Header files and development documentation for %{name}.
 %description devel -l pl
 Pliki nag³ówkowe i dokumentacja do %{name}.
 
-%package static
-Summary:	%{name} static library
-Summary(pl):	Statyczna biblioteka %{name}
-Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
+%package -n python-metakit
+Summary:	Python modules for metakit
+Group:		Libraries/Python
+Requires:	%{name} = %{version}-%{release}
+%pyrequires_eq	python-libs
 
-%description static
-%{name} static library.
+%description -n python-metakit
+Python modules for metakit.
 
-%description static -l pl
-Biblioteka statyczna %{name}.
+%package -n tcl-metakit
+Summary:	Tcl modules for metakit
+Group:		Development/Languages/Tcl
+Requires:	%{name} = %{version}-%{release}
+
+%description -n tcl-metakit
+Tcl modules for metakit.
 
 %prep
 %setup -q
-%patch0 -p1
+
+# remove CVS control files
+find -name CVS -print0 | xargs -0 rm -rf
 
 %build
 cd unix
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
-%configure
+%configure \
+	--with-tcl \
+	--with-python \
+	--enable-shared
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_includedir},%{_libdir}} \
+install -d $RPM_BUILD_ROOT{%{_includedir},%{_libdir},%{py_sitedir}} \
 	$RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
-cd unix
 
 %{__make} install \
+	-C unix \
 	DESTDIR=$RPM_BUILD_ROOT
 
-cd ..
-install examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -88,17 +97,23 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README WHATSNEW
+%doc README
 %attr(755,root,root) %{_libdir}/*.so
 
 %files devel
 %defattr(644,root,root,755)
 %doc CHANGES Metakit.html doc
-%{_libdir}/*.la
 %{_includedir}/*.h
 %{_includedir}/*.inl
 %{_examplesdir}/%{name}-%{version}
 
-%files static
+%files -n python-metakit
 %defattr(644,root,root,755)
-%{_libdir}/*.a
+%attr(755,root,root) %{py_sitedir}/Mk4py.so
+%{py_sitedir}/metakit.py
+
+%files -n tcl-metakit
+%defattr(644,root,root,755)
+%dir %{_libdir}/tcl8.4/Mk4tcl
+%attr(755,root,root) %{_libdir}/tcl8.4/Mk4tcl/Mk4tcl.so
+%{_libdir}/tcl8.4/Mk4tcl/pkgIndex.tcl
