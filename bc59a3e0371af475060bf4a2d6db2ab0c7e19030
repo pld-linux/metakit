@@ -1,0 +1,3 @@
+- updated to 2.4.9.5, updated URL
+- static package is gone (can't be built with shared at some time, anyone bother to hack?)
+- added python- and tcl- bindings subpackages
