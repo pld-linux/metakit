@@ -37,6 +37,7 @@ Summary:	Header files and development documentation for %{name}
 Summary(pl):	Pliki nag堯wkowe i dokumentacja do %{name}
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Obsoletes:	metakit-static
 
 %description devel
 Header files and development documentation for %{name}.
@@ -46,6 +47,7 @@ Pliki nag堯wkowe i dokumentacja do %{name}.
 
 %package -n python-metakit
 Summary:	Python modules for metakit
+Summary(pl):	Modu造 Pythona dla pakietu metakit
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
 %pyrequires_eq	python-libs
@@ -53,13 +55,20 @@ Requires:	%{name} = %{version}-%{release}
 %description -n python-metakit
 Python modules for metakit.
 
+%description -n python-metakit -l pl
+Modu造 Pythona dla pakietu metakit.
+
 %package -n tcl-metakit
 Summary:	Tcl modules for metakit
+Summary(pl):	Modu造 Tcl-a dla pakietu metakit
 Group:		Development/Languages/Tcl
 Requires:	%{name} = %{version}-%{release}
 
 %description -n tcl-metakit
 Tcl modules for metakit.
+
+%description -n tcl-metakit -l pl
+Modu造 Tcl-a dla pakietu metakit.
 
 %prep
 %setup -q
