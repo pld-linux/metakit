@@ -1,5 +1,5 @@
 Summary:	Embeddable database
-Summary(pl):	Baza danych
+Summary(pl.UTF-8):   Baza danych
 Name:		metakit
 Version:	2.4.9.5
 Release:	0.1
@@ -24,17 +24,17 @@ need a complex runtime installation. In terms of the data model,
 MetaKit takes the middle ground between RDBMS, OODBMS, and flat-file
 databases - yet it is quite different from each of them.
 
-%description -l pl
-MetaKit to baza danych pracuj±ca na platformach Unix, Windows,
-Macintosh oraz innych. Pozwala ona na tworzenie aplikacji, które
-zapisuj± dane efektywnie w sposób ³atwy do przenoszenia miêdzy
-platformami i które nie wymagaj± skomplikowanej instalacji. MetaKit
-u¿ywaj±c okre¶leñ z dziedziny baz danych znajduje siê pomiêdzy RDBMS,
-OODBMS i bazami opartymi na p³askich-plikach.
+%description -l pl.UTF-8
+MetaKit to baza danych pracujÄ…ca na platformach Unix, Windows,
+Macintosh oraz innych. Pozwala ona na tworzenie aplikacji, ktÃ³re
+zapisujÄ… dane efektywnie w sposÃ³b Å‚atwy do przenoszenia miÄ™dzy
+platformami i ktÃ³re nie wymagajÄ… skomplikowanej instalacji. MetaKit
+uÅ¼ywajÄ…c okreÅ›leÅ„ z dziedziny baz danych znajduje siÄ™ pomiÄ™dzy RDBMS,
+OODBMS i bazami opartymi na pÅ‚askich-plikach.
 
 %package devel
 Summary:	Header files and development documentation for %{name}
-Summary(pl):	Pliki nag³ówkowe i dokumentacja do %{name}
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe i dokumentacja do %{name}
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	metakit-static
@@ -42,12 +42,12 @@ Obsoletes:	metakit-static
 %description devel
 Header files and development documentation for %{name}.
 
-%description devel -l pl
-Pliki nag³ówkowe i dokumentacja do %{name}.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe i dokumentacja do %{name}.
 
 %package -n python-metakit
 Summary:	Python modules for metakit
-Summary(pl):	Modu³y Pythona dla pakietu metakit
+Summary(pl.UTF-8):   ModuÅ‚y Pythona dla pakietu metakit
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
 %pyrequires_eq	python-libs
@@ -55,20 +55,20 @@ Requires:	%{name} = %{version}-%{release}
 %description -n python-metakit
 Python modules for metakit.
 
-%description -n python-metakit -l pl
-Modu³y Pythona dla pakietu metakit.
+%description -n python-metakit -l pl.UTF-8
+ModuÅ‚y Pythona dla pakietu metakit.
 
 %package -n tcl-metakit
 Summary:	Tcl modules for metakit
-Summary(pl):	Modu³y Tcl-a dla pakietu metakit
+Summary(pl.UTF-8):   ModuÅ‚y Tcl-a dla pakietu metakit
 Group:		Development/Languages/Tcl
 Requires:	%{name} = %{version}-%{release}
 
 %description -n tcl-metakit
 Tcl modules for metakit.
 
-%description -n tcl-metakit -l pl
-Modu³y Tcl-a dla pakietu metakit.
+%description -n tcl-metakit -l pl.UTF-8
+ModuÅ‚y Tcl-a dla pakietu metakit.
 
 %prep
 %setup -q
