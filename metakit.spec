@@ -1,5 +1,5 @@
 Summary:	Embeddable database
-Summary(pl.UTF-8):   Baza danych
+Summary(pl.UTF-8):	Baza danych
 Name:		metakit
 Version:	2.4.9.5
 Release:	0.1
@@ -34,7 +34,7 @@ OODBMS i bazami opartymi na płaskich-plikach.
 
 %package devel
 Summary:	Header files and development documentation for %{name}
-Summary(pl.UTF-8):   Pliki nagłówkowe i dokumentacja do %{name}
+Summary(pl.UTF-8):	Pliki nagłówkowe i dokumentacja do %{name}
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	metakit-static
@@ -47,7 +47,7 @@ Pliki nagłówkowe i dokumentacja do %{name}.
 
 %package -n python-metakit
 Summary:	Python modules for metakit
-Summary(pl.UTF-8):   Moduły Pythona dla pakietu metakit
+Summary(pl.UTF-8):	Moduły Pythona dla pakietu metakit
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
 %pyrequires_eq	python-libs
@@ -60,7 +60,7 @@ Moduły Pythona dla pakietu metakit.
 
 %package -n tcl-metakit
 Summary:	Tcl modules for metakit
-Summary(pl.UTF-8):   Moduły Tcl-a dla pakietu metakit
+Summary(pl.UTF-8):	Moduły Tcl-a dla pakietu metakit
 Group:		Development/Languages/Tcl
 Requires:	%{name} = %{version}-%{release}
 
