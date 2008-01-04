@@ -1,12 +1,12 @@
 Summary:	Embeddable database
 Summary(pl.UTF-8):	Baza danych
 Name:		metakit
-Version:	2.4.9.5
+Version:	2.4.9.7
 Release:	0.1
 License:	GPL
 Group:		Libraries
 Source0:	http://www.equi4.com/pub/mk/%{name}-%{version}.tar.gz
-# Source0-md5:	37ba351462dad0d7f01394e04c173ce3
+# Source0-md5:	17330257376eea657827ed632ea62c9e
 URL:		http://www.equi4.com/metakit.html
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -15,6 +15,8 @@ BuildRequires:	libtool
 BuildRequires:	python-devel
 BuildRequires:	tcl-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		tcl_version	8.5
 
 %description
 MetaKit is an embeddable database which runs on Unix, Windows,
@@ -73,17 +75,14 @@ Moduły Tcl-a dla pakietu metakit.
 %prep
 %setup -q
 
-# remove CVS control files
-find -name CVS -print0 | xargs -0 rm -rf
-
 %build
 cd unix
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %configure \
-	--with-tcl \
-	--with-python \
+	--with-tcl=%{_includedir},%{_libdir}/tcl%{tcl_version} \
+	--with-python=%{py_incdir},%{py_sitedir} \
 	--enable-shared
 %{__make}
 
@@ -123,6 +122,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n tcl-metakit
 %defattr(644,root,root,755)
-%dir %{_libdir}/tcl8.4/Mk4tcl
-%attr(755,root,root) %{_libdir}/tcl8.4/Mk4tcl/Mk4tcl.so
-%{_libdir}/tcl8.4/Mk4tcl/pkgIndex.tcl
+%dir %{_libdir}/tcl%{tcl_version}/Mk4tcl
+%attr(755,root,root) %{_libdir}/tcl%{tcl_version}/Mk4tcl/Mk4tcl.so
+%{_libdir}/tcl%{tcl_version}/Mk4tcl/pkgIndex.tcl
