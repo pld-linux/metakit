@@ -7,6 +7,7 @@ License:	GPL
 Group:		Libraries
 Source0:	http://www.equi4.com/pub/mk/%{name}-%{version}.tar.gz
 # Source0-md5:	17330257376eea657827ed632ea62c9e
+Patch0:		%{name}-sparc64.patch
 URL:		http://www.equi4.com/metakit.html
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -74,6 +75,7 @@ Moduły Tcl-a dla pakietu metakit.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 cd unix
