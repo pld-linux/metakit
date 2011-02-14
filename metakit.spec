@@ -2,7 +2,7 @@ Summary:	Embeddable database
 Summary(pl.UTF-8):	Baza danych
 Name:		metakit
 Version:	2.4.9.7
-Release:	0.1
+Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	http://www.equi4.com/pub/mk/%{name}-%{version}.tar.gz
