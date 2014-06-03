@@ -1,0 +1,63 @@
+--- metakit-2.4.9.7/tcl/stubtcl.h~	2007-03-09 16:58:53.000000000 +0100
++++ metakit-2.4.9.7/tcl/stubtcl.h	2014-06-03 11:04:36.246677360 +0200
+@@ -1,7 +1,5 @@
+ /* Internal stub code, copied from CritLib */
+ 
+-TclStubs *tclStubsPtr;
+-TclPlatStubs *tclPlatStubsPtr;
+ struct TclIntStubs *tclIntStubsPtr;
+ struct TclIntPlatStubs *tclIntPlatStubsPtr;
+
+--- metakit-2.4.9.7/tcl/mk4tcl.cpp	2007-06-18 14:05:24.000000000 -0700
++++ metakit-2.4.9.7/tcl/mk4tcl.cpp.new	2008-10-17 18:50:50.000000000 -0700
+@@ -979,7 +979,7 @@
+   void *tag = (&view_[0])._seq; // horrific hack to get at c4_Sequence pointer
+   if (objPtr->typePtr !=  &mkPropertyType || objPtr
+     ->internalRep.twoPtrValue.ptr1 != tag) {
+-    Tcl_ObjType *oldTypePtr = objPtr->typePtr;
++    CONST86 Tcl_ObjType *oldTypePtr = objPtr->typePtr;
+ 
+     char type = 'S';
+ 
+@@ -1083,7 +1083,7 @@
+   }
+ 
+   if (objPtr->typePtr !=  &mkCursorType) {
+-    Tcl_ObjType *oldTypePtr = objPtr->typePtr;
++    CONST86 Tcl_ObjType *oldTypePtr = objPtr->typePtr;
+ 
+     const char *string = Tcl_GetStringFromObj(objPtr, 0);
+ 
+@@ -2156,7 +2156,7 @@
+         _error = TCL_OK;
+       else if (_error == TCL_ERROR) {
+         char msg[100];
+-        sprintf(msg, "\n  (\"mk::loop\" body line %d)", interp->errorLine);
++        sprintf(msg, "\n  (\"mk::loop\" body line %d)", Tcl_GetErrorLine(interp));
+         Tcl_AddObjErrorInfo(interp, msg,  - 1);
+       }
+       break;
+--- metakit-2.4.9.7/tcl/mk4too.cpp~	2009-01-24 15:37:00.000000000 +0100
++++ metakit-2.4.9.7/tcl/mk4too.cpp	2009-01-24 15:39:10.000000000 +0100
+@@ -614,7 +614,7 @@
+           _error = TCL_OK;
+         else if (_error == TCL_ERROR) {
+           char msg[100];
+-          sprintf(msg, "\n  (\"mk::loop\" body line %d)", interp->errorLine);
++          sprintf(msg, "\n  (\"mk::loop\" body line %d)", Tcl_GetErrorLine(interp));
+           Tcl_AddObjErrorInfo(interp, msg,  - 1);
+         }
+         break;
+--- metakit-2.4.9.7/tcl/stubtcl.h.org	2014-06-03 11:21:44.264915729 +0200
++++ metakit-2.4.9.7/tcl/stubtcl.h	2014-06-03 11:21:58.755407628 +0200
+@@ -28,8 +28,8 @@
+ 
+   if (tclStubsPtr->hooks != NULL) {
+     tclPlatStubsPtr = tclStubsPtr->hooks->tclPlatStubs;
+-    tclIntStubsPtr = tclStubsPtr->hooks->tclIntStubs;
+-    tclIntPlatStubsPtr = tclStubsPtr->hooks->tclIntPlatStubs;
++    tclIntStubsPtr = (TclIntStubs*)tclStubsPtr->hooks->tclIntStubs;
++    tclIntPlatStubsPtr = (TclIntPlatStubs*)tclStubsPtr->hooks->tclIntPlatStubs;
+   }
+ 
+   return 1;

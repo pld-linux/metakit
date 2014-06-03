@@ -2,22 +2,23 @@ Summary:	Embeddable database
 Summary(pl.UTF-8):	Baza danych
 Name:		metakit
 Version:	2.4.9.7
-Release:	2
+Release:	3
 License:	GPL
 Group:		Libraries
 Source0:	http://www.equi4.com/pub/mk/%{name}-%{version}.tar.gz
 # Source0-md5:	17330257376eea657827ed632ea62c9e
 Patch0:		%{name}-sparc64.patch
+Patch1:		%{name}-build.patch
 URL:		http://www.equi4.com/metakit.html
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 BuildRequires:	python-devel
-BuildRequires:	tcl-devel
+BuildRequires:	tcl-devel >= %{tcl_version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		tcl_version	8.5
+%define		tcl_version	8.6
 
 %description
 MetaKit is an embeddable database which runs on Unix, Windows,
@@ -76,6 +77,7 @@ Moduły Tcl-a dla pakietu metakit.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 cd unix
@@ -83,6 +85,7 @@ cd unix
 %{__aclocal}
 %{__autoconf}
 %configure \
+	CXXFLAGS="%{rpmcxxflags} -DUSE_INTERP_RESULT -DUSE_INTERP_ERRORLINE" \
 	--with-tcl=%{_includedir},%{_libdir}/tcl%{tcl_version} \
 	--with-python=%{py_incdir},%{py_sitedir} \
 	--enable-shared
